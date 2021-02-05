@@ -1,0 +1,16 @@
+<h2>Pogoda dla Lublin</h2>
+<?php $weather = $block->getWeather(); ?>
+<table>
+    <tr>
+        <th>Temperatura </th>
+        <th>Ciśnienie hPa</th>
+        <th>Wilgotność %</th>
+    </tr>
+<!--    --><?php //foreach ($weathers as $weather): ?>
+    <tr>
+        <td><?=$weather->getTemperature()?></td>
+        <td><?=$weather->getPressure()?></td>
+        <td><?=$weather->getHumidity()?></td>
+    </tr>
+<!--    --><?php //endforeach;?>
+</table>
