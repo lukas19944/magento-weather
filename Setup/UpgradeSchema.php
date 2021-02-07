@@ -12,10 +12,21 @@ class UpgradeSchema implements UpgradeSchemaInterface{
     {
         $setup->startSetup();
 
-//        if (version_compare($context->getVersion(), '0.2.0', '<')){
-//            $tableName = $setup->getTable('lukasz_weather');
-//
-//        }
+        if (version_compare($context->getVersion(), '0.0.2', '<')){
+            $setup->getConnection()->addColumn(
+                $setup->getTable('lukasz_weather'),
+                'created_at',
+                [
+                    'type' => \Magento\Framework\DB\Ddl\Table::TYPE_TIMESTAMP,
+                    'nullable' => false,
+                    'comment' => 'Created at',
+                    'after' => 'humidity',
+
+                ]
+            );
+
+
+        }
         $setup->endSetup();
     }
 

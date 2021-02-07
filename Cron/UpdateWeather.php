@@ -40,10 +40,10 @@ class UpdateWeather{
     }
 
     public function execute(){
-        $this->logger->info('cron works');
+        $this->logger->info(date("Y-m-d h:i:s"));
 
         $weather = $this->openWweather->getWeather();
-        $data = ['temperature'=>$weather->temp, 'pressure'=>$weather->pressure, 'humidity'=>$weather->humidity];
+        $data = ['temperature'=>$weather->temp, 'pressure'=>$weather->pressure, 'humidity'=>$weather->humidity,'created_at'=> date("Y-m-d h:i:s")];
 
         $weatherModel = $this->weather;
         $weatherModel->setData($data);
